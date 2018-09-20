@@ -1,0 +1,16 @@
+<html>
+<head>
+</head>
+<body>
+<?php echo $this->getForm()->toHtml() ?>
+<?php echo $this->__('You will be redirected to the eCommerceConnect website in a few seconds.') ?>
+<script type="text/javascript">
+    console.log(document.getElementsByName('form_key')[0]);
+    var elem = document.getElementsByName('form_key')[0];
+    if (elem !== undefined) {
+      elem.parentNode.removeChild(elem);
+    }
+    document.getElementById("paymaster_form").submit();
+
+
+</script>

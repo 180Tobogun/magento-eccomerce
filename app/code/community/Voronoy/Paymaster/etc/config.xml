@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Voronoy_Paymaster>
+            <version>1.0.1</version>
+        </Voronoy_Paymaster>
+    </modules>
+
+    <global>
+        <models>
+            <voronoy_paymaster>
+                <class>Voronoy_Paymaster_Model</class>
+                <resourceModel>voronoy_paymaster_resource</resourceModel>
+            </voronoy_paymaster>
+            <voronoy_paymaster_resource>
+                <class>Voronoy_Paymaster_Model_Resource</class>
+            </voronoy_paymaster_resource>
+        </models>
+        <blocks>
+            <voronoy_paymaster>
+                <class>Voronoy_Paymaster_Block</class>
+            </voronoy_paymaster>
+        </blocks>
+        <helpers>
+            <voronoy_paymaster>
+                <class>Voronoy_Paymaster_Helper</class>
+            </voronoy_paymaster>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <voronoy_paymaster>
+                <use>standard</use>
+                <args>
+                    <module>Voronoy_Paymaster</module>
+                    <frontName>paymaster</frontName>
+                </args>
+            </voronoy_paymaster>
+        </routers>
+        <translate>
+            <modules>
+                <Voronoy_Paymaster>
+                    <files>
+                        <default>Voronoy_Paymaster.csv</default>
+                    </files>
+                </Voronoy_Paymaster>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Voronoy_Paymaster>
+                    <files>
+                        <default>Voronoy_Paymaster.csv</default>
+                    </files>
+                </Voronoy_Paymaster>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <payment>
+            <paymaster_general>
+                <active>1</active>
+                <order_status>processing</order_status>
+                <gateway_url>https://ecg.test.upc.ua/go/enter</gateway_url>
+                <secret_key backend_model="adminhtml/system_config_backend_encrypted"></secret_key>
+            </paymaster_general>
+            <paymaster_all>
+                <model>voronoy_paymaster/method_all</model>
+                <active>0</active>
+                <title>eCommerceConnect</title>
+            </paymaster_all>
+            <paymaster_card>
+                <model>voronoy_paymaster/method_card</model>
+                <active>0</active>
+                <title>Visa/MasterCard</title>
+            </paymaster_card>
+
+        </payment>
+    </default>
+</config>
